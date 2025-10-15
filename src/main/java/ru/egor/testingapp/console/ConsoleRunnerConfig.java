@@ -11,8 +11,13 @@ import java.util.Scanner;
 @Configuration
 public class ConsoleRunnerConfig {
 
+
+    private final CommandProcessor commandProcessor;
+
     @Autowired
-    private CommandProcessor commandProcessor;
+    public ConsoleRunnerConfig(CommandProcessor commandProcessor) {
+        this.commandProcessor = commandProcessor;
+    }
 
     @Bean
     public CommandLineRunner commandScanner(TestService testService) {

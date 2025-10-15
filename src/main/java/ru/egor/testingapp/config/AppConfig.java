@@ -12,7 +12,6 @@ import java.util.List;
 @Configuration
 public class AppConfig {
     @Bean
-    @Scope(value = BeanDefinition.SCOPE_SINGLETON)
     public List<TestEntity> testContainer(){
         return new ArrayList<>();
     }

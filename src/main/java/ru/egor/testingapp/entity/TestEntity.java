@@ -7,10 +7,8 @@ public class TestEntity {
     private Long id;
     private String title;
     private String subject;
-    private List<String> questions = new ArrayList<String>();
+    private List<String> questions = new ArrayList<>();
 
-    public TestEntity() {
-    }
 
     public TestEntity(Long id, String title, String subject) {
         this.id = id;
@@ -20,10 +18,6 @@ public class TestEntity {
 
     public void addQuestion(String qAndA) {
         this.questions.add(qAndA);
-    }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof TestEntity;
     }
 
     public Long getId() {

@@ -13,7 +13,7 @@ public class CommandProcessor {
     private final TestService testService;
 
     @Autowired
-    public CommandProcessor(final TestService testService) {
+    public CommandProcessor(TestService testService) {
         this.testService = testService;
     }
 

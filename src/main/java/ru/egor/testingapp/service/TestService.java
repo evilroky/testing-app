@@ -3,7 +3,7 @@ package ru.egor.testingapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.egor.testingapp.entity.TestEntity;
-import ru.egor.testingapp.repository.TestRpository;
+import ru.egor.testingapp.repository.TestRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,10 +11,10 @@ import java.util.Scanner;
 @Service
 public class TestService implements FunctionalTestService{
 
-     private final TestRpository repository;
+     private final TestRepository repository;
 
      @Autowired
-     public TestService(TestRpository repository) {
+     public TestService(TestRepository repository) {
          this.repository = repository;
          TestEntity t1 = new TestEntity(1L, "Основы Java", "Программирование");
          t1.addQuestion("Что такое JVM?|виртуальная машина");

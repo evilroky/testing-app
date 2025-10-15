@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class TestRpository implements CrudRepository<TestEntity, Long> {
+public class TestRepository implements CrudRepository<TestEntity, Long> {
 
     private final List<TestEntity> container;
 
     @Autowired
-    public TestRpository(List<TestEntity> container) {
+    public TestRepository(List<TestEntity> container) {
         this.container = container;
     }
 
@@ -43,6 +43,7 @@ public class TestRpository implements CrudRepository<TestEntity, Long> {
         container.removeIf(e -> e.getId().equals(id));
     }
 
+    @Override
     public List<TestEntity> findAll() {
         return List.copyOf(container);
     }

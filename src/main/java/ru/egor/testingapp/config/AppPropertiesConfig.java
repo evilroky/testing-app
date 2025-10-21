@@ -1,3 +1,4 @@
+/*
 package ru.egor.testingapp.config;
 
 import jakarta.annotation.PostConstruct;
@@ -26,3 +27,4 @@ public class AppPropertiesConfig {
         return this.appVersion;
     }
 }
+*/

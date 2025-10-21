@@ -1,3 +1,4 @@
+/*
 package ru.egor.testingapp.config;
 
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -16,3 +17,4 @@ public class AppConfig {
         return new ArrayList<>();
     }
 }
+*/

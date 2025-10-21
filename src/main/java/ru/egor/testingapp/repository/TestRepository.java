@@ -1,3 +1,4 @@
+/*
 package ru.egor.testingapp.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,3 +49,4 @@ public class TestRepository implements CrudRepository<TestEntity, Long> {
         return List.copyOf(container);
     }
 }
+*/

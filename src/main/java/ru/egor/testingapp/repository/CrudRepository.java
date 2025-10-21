@@ -1,3 +1,4 @@
+/*
 package ru.egor.testingapp.repository;
 
 import ru.egor.testingapp.entity.TestEntity;
@@ -11,3 +12,4 @@ public interface CrudRepository<T, ID> {
     void delete(ID id);
     List<TestEntity> findAll();
 }
+*/

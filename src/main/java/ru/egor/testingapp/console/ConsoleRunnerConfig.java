@@ -1,3 +1,4 @@
+/*
 package ru.egor.testingapp.console;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,3 +41,4 @@ public class ConsoleRunnerConfig {
         };
     }
 }
+*/

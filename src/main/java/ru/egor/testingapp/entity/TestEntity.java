@@ -1,3 +1,4 @@
+/*
 package ru.egor.testingapp.entity;
 
 import java.util.ArrayList;
@@ -52,3 +53,4 @@ public class TestEntity {
         this.questions = questions;
     }
 }
+*/

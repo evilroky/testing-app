@@ -1,3 +1,4 @@
+/*
 package ru.egor.testingapp.service;
 
 import ru.egor.testingapp.entity.TestEntity;
@@ -13,3 +14,4 @@ public interface FunctionalTestService {
     List<TestEntity> listAll();
     int takeTest(Long id);
 }
+*/

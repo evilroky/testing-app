@@ -1,3 +1,4 @@
+/*
 package ru.egor.testingapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,3 +86,4 @@ public class TestService implements FunctionalTestService{
         }
     }
 }
+*/

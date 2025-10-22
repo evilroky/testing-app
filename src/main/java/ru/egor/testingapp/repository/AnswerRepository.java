@@ -1,7 +1,7 @@
 package ru.egor.testingapp.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.egor.testingapp.entity.Answers;
+import ru.egor.testingapp.entity.Answer;
 
-public interface AnswerRepository extends CrudRepository<Answers, Integer> {
+public interface AnswerRepository extends CrudRepository<Answer, Integer> {
 }

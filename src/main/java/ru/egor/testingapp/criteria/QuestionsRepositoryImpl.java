@@ -6,8 +6,8 @@ import jakarta.persistence.criteria.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.egor.testingapp.entity.Questions;
-import ru.egor.testingapp.entity.Tests;
+import ru.egor.testingapp.entity.Question;
+import ru.egor.testingapp.entity.Test;
 
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class QuestionsRepositoryImpl implements QuestionsRepositoryCustom {
     }
 
     @Override
-    public List<Questions> findByTestsTitle(String title) {
+    public List<Question> findByTestsTitle(String title) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Questions> cq = cb.createQuery(Questions.class);
+        CriteriaQuery<Question> cq = cb.createQuery(Question.class);
 
-        Root<Questions> q = cq.from(Questions.class);
-        Join<Questions, Tests> t = q.join("test_id", JoinType.INNER);
+        Root<Question> q = cq.from(Question.class);
+        Join<Question, Test> t = q.join("test", JoinType.INNER);
         Predicate p = cb.equal(t.get("title"),title);
 
         cq.select(q).where(p);
@@ -37,7 +37,7 @@ public class QuestionsRepositoryImpl implements QuestionsRepositoryCustom {
 
     @Transactional
     @Override
-    public void save(Questions questions) {
+    public void save(Question questions) {
         if (questions.getId() == null) {
             em.persist(questions);
         }else {

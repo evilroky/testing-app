@@ -1,13 +1,13 @@
 package ru.egor.testingapp.criteria;
 
-import ru.egor.testingapp.entity.Questions;
+import ru.egor.testingapp.entity.Question;
 
 import java.util.List;
 
 public interface QuestionsRepositoryCustom {
 
     //Нахождения теста по названию
-    List<Questions> findByTestsTitle(String title);
+    List<Question> findByTestsTitle(String title);
 
-    void save(Questions questions);
+    void save(Question questions);
 }

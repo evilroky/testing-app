@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,10 +20,10 @@ public class Users {
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Roles role_id;
+    private Role roleId;
 
     @Column()
-    public LocalDateTime create_date;
+    public LocalDateTime createDate;
 
     public Long getId() {
         return id;
@@ -37,12 +37,12 @@ public class Users {
         return password;
     }
 
-    public Roles getRole_id() {
-        return role_id;
+    public Role getRoleId() {
+        return roleId;
     }
 
-    public LocalDateTime getCreate_date() {
-        return create_date;
+    public LocalDateTime getCreateDate() {
+        return createDate;
     }
 
     public void setUsername(String username) {
@@ -53,21 +53,21 @@ public class Users {
         this.password = password;
     }
 
-    public void setRole_id(Roles role_id) {
-        this.role_id = role_id;
+    public void setRoleId(Role roleId) {
+        this.roleId = roleId;
     }
 
-    public void setCreate_date(LocalDateTime create_date) {
-        this.create_date = create_date;
+    public void setCreate_date(LocalDateTime createDate) {
+        this.createDate = createDate;
     }
 
-    public Users() {
+    public User() {
     }
 
-    public Users(String username, String password, Roles role_id, LocalDateTime create_date) {
+    public User(String username, String password, Role roleId, LocalDateTime createDate) {
         this.username = username;
         this.password = password;
-        this.role_id = role_id;
-        this.create_date = create_date;
+        this.roleId = roleId;
+        this.createDate = createDate;
     }
 }

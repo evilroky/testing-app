@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "answers")
-public class Answers {
+public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "questions_id")
-    private Questions questions_id;
+    @JoinColumn(name = "question")
+    private Question question;
 
     @Column
     private String text;
@@ -24,8 +24,8 @@ public class Answers {
         return id;
     }
 
-    public Questions getQuestions_id() {
-        return questions_id;
+    public Question getQuestion() {
+        return question;
     }
 
     public String getText() {
@@ -36,8 +36,8 @@ public class Answers {
         return correct;
     }
 
-    public void setQuestions_id(Questions questions_id) {
-        this.questions_id = questions_id;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 
     public void setText(String text) {
@@ -48,11 +48,11 @@ public class Answers {
         this.correct = correct;
     }
 
-    public Answers() {
+    public Answer() {
     }
 
-    public Answers(Questions questions_id, String text, Boolean correct) {
-        this.questions_id = questions_id;
+    public Answer(Question questions_id, String text, Boolean correct) {
+        this.question = questions_id;
         this.text = text;
         this.correct = correct;
     }

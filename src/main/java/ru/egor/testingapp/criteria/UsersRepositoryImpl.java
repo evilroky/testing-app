@@ -5,7 +5,7 @@ import jakarta.persistence.criteria.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.egor.testingapp.entity.Users;
+import ru.egor.testingapp.entity.User;
 
 import java.util.List;
 
@@ -19,11 +19,11 @@ public class UsersRepositoryImpl implements UsersRepositoryCustom {
     }
 
     @Override
-    public List<Users> findByUsername(String username) {
+    public List<User> findByUsername(String username) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Users> cq = cb.createQuery(Users.class);
+        CriteriaQuery<User> cq = cb.createQuery(User.class);
 
-        Root<Users> root = cq.from(Users.class);
+        Root<User> root = cq.from(User.class);
         Predicate predicate = cb.equal(root.get("username"), username);
 
         cq.select(root).where(predicate);
@@ -33,7 +33,7 @@ public class UsersRepositoryImpl implements UsersRepositoryCustom {
 
     @Transactional
     @Override
-    public void save(Users user) {
+    public void save(User user) {
         if (user.getId() == null) {
             em.persist(user);
         } else {

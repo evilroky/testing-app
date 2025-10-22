@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tests")
-public class Tests {
+public class Test {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,10 +20,10 @@ public class Tests {
 
     @ManyToOne
     @JoinColumn(name = "author")
-    private Users author;
+    private User author;
 
     @Column()
-    private LocalDateTime created_date;
+    private LocalDateTime createDate;
 
     public Long getId() {
         return id;
@@ -37,12 +37,12 @@ public class Tests {
         return description;
     }
 
-    public Users getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public LocalDateTime getCreated_date() {
-        return created_date;
+    public LocalDateTime getCreateDate() {
+        return createDate;
     }
 
     public void setTitle(String title) {
@@ -53,21 +53,21 @@ public class Tests {
         this.description = description;
     }
 
-    public void setAuthor(Users author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
-    public void setCreated_date(LocalDateTime created_date) {
-        this.created_date = created_date;
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
     }
 
-    public Tests() {
+    public Test() {
     }
 
-    public Tests(String title, String description, Users users_id, LocalDateTime created_date) {
+    public Test(String title, String description, User users_id, LocalDateTime createDate) {
         this.title = title;
         this.description = description;
         this.author = users_id;
-        this.created_date = created_date;
+        this.createDate = createDate;
     }
 }

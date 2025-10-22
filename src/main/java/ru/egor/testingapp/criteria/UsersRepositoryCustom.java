@@ -1,13 +1,13 @@
 package ru.egor.testingapp.criteria;
 
-import ru.egor.testingapp.entity.Users;
+import ru.egor.testingapp.entity.User;
 
 import java.util.List;
 
 public interface UsersRepositoryCustom {
 
     //Нахождение пользователя по имени
-    List<Users> findByUsername(String username);
+    List<User> findByUsername(String username);
 
-    void save(Users users);
+    void save(User user);
 }

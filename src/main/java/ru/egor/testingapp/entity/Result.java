@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "results")
-public class Results {
+public class Result {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,11 +14,11 @@ public class Results {
 
     @ManyToOne
     @JoinColumn(name = "passed_by")
-    private Users passed_by;
+    private User passedBy;
 
     @ManyToOne
     @JoinColumn(name = "test_id")
-    private Tests test_id;
+    private Test test;
 
     @Column
     private Integer score;
@@ -33,12 +33,12 @@ public class Results {
         return id;
     }
 
-    public Users getPassed_by() {
-        return passed_by;
+    public User getPassedBy() {
+        return passedBy;
     }
 
-    public Tests getTest_id() {
-        return test_id;
+    public Test getTest() {
+        return test;
     }
 
     public Integer getScore() {
@@ -53,12 +53,12 @@ public class Results {
         return passed_date;
     }
 
-    public void setPassed_by(Users passed_by) {
-        this.passed_by = passed_by;
+    public void setPassedBy(User passedBy) {
+        this.passedBy = passedBy;
     }
 
-    public void setTest_id(Tests test_id) {
-        this.test_id = test_id;
+    public void setTest(Test test) {
+        this.test = test;
     }
 
     public void setScore(Integer score) {
@@ -73,12 +73,12 @@ public class Results {
         this.passed_date = passed_date;
     }
 
-    public Results() {
+    public Result() {
     }
 
-    public Results(Users user_id, Tests test_id, Integer score, Integer total, LocalDateTime passed_date) {
-        this.passed_by = user_id;
-        this.test_id = test_id;
+    public Result(User passedBy, Test test, Integer score, Integer total, LocalDateTime passed_date) {
+        this.passedBy = passedBy;
+        this.test = test;
         this.score = score;
         this.total = total;
         this.passed_date = passed_date;

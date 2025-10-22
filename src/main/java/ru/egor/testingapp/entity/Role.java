@@ -4,31 +4,31 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "roles")
-public class Roles {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String role_name;
+    private String roleName;
 
     public Long getId() {
         return id;
     }
 
-    public String getRole_name() {
-        return role_name;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRole_name(String role_name) {
-        this.role_name = role_name;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    public Roles() {
+    public Role() {
     }
 
-    public Roles(String role_name) {
-        this.role_name = role_name;
+    public Role(String role_name) {
+        this.roleName = role_name;
     }
 }

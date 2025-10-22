@@ -6,36 +6,36 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
-import ru.egor.testingapp.entity.Questions;
-import ru.egor.testingapp.repository.QuestionsRepository;
-import ru.egor.testingapp.repository.TestsRepository;
+import ru.egor.testingapp.entity.Question;
+import ru.egor.testingapp.repository.QuestionRepository;
+import ru.egor.testingapp.repository.TestRepository;
 
 import java.util.List;
 
 @Service
-public class TestsServiceImpl implements TestsService {
+public class TestServiceImpl implements TestService {
 
-    private final TestsRepository testsRepository;
-    private final QuestionsRepository questionsRepository;
+    private final TestRepository testRepository;
+    private final QuestionRepository questionRepository;
     private final PlatformTransactionManager transactionManager;
 
     @Autowired
-    public TestsServiceImpl(TestsRepository testsRepository, QuestionsRepository questionsRepository, PlatformTransactionManager transactionManager) {
-        this.testsRepository = testsRepository;
-        this.questionsRepository = questionsRepository;
+    public TestServiceImpl(TestRepository testRepository, QuestionRepository questionRepository, PlatformTransactionManager transactionManager) {
+        this.testRepository = testRepository;
+        this.questionRepository = questionRepository;
         this.transactionManager = transactionManager;
     }
 
     @Override
-    public void deleteTests(String title) {
+    public void deleteTest(String title) {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
         try{
-            List<Questions> questions = questionsRepository.findByTestsTitle(title);
-            for (Questions question : questions) {
-                questionsRepository.delete(question);
+            List<Question> questions = questionRepository.findByTestsTitle(title);
+            for (Question question : questions) {
+                questionRepository.delete(question);
             }
 
-            testsRepository.deleteByTitle(title);
+            testRepository.deleteByTitle(title);
 
             transactionManager.commit(status);
         }

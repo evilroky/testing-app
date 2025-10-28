@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User List</title>
+</head>
+<body>
+<h1>User List</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>create_date</th>
+        <th>password</th>
+        <th>username</th>
+        <th>role_id</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.createDate}"></td>
+        <td th:text="${user.password}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.roleId}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

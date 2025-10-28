@@ -1,5 +1,6 @@
 package ru.egor.testingapp;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,13 @@ public class TestServiceTest {
     }
 
     @BeforeEach
-    void clearDatabase() {
+    void clearDatabaseBF() {
+        questionRepository.deleteAll();
+        testRepository.deleteAll();
+    }
+
+    @AfterEach
+    void clearDatabaseAF() {
         questionRepository.deleteAll();
         testRepository.deleteAll();
     }

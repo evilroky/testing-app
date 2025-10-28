@@ -27,7 +27,7 @@ public class Result {
     private Integer total;
 
     @Column
-    private LocalDateTime passed_date;
+    private LocalDateTime passedDate;
 
     public Long getId() {
         return id;
@@ -49,8 +49,8 @@ public class Result {
         return total;
     }
 
-    public LocalDateTime getPassed_date() {
-        return passed_date;
+    public LocalDateTime getPassedDate() {
+        return passedDate;
     }
 
     public void setPassedBy(User passedBy) {
@@ -69,18 +69,18 @@ public class Result {
         this.total = total;
     }
 
-    public void setPassed_date(LocalDateTime passed_date) {
-        this.passed_date = passed_date;
+    public void setPassedDate(LocalDateTime passedDate) {
+        this.passedDate = passedDate;
     }
 
     public Result() {
     }
 
-    public Result(User passedBy, Test test, Integer score, Integer total, LocalDateTime passed_date) {
+    public Result(User passedBy, Test test, Integer score, Integer total, LocalDateTime passedDate) {
         this.passedBy = passedBy;
         this.test = test;
         this.score = score;
         this.total = total;
-        this.passed_date = passed_date;
+        this.passedDate = passedDate;
     }
 }

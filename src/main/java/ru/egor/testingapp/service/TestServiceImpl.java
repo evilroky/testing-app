@@ -29,7 +29,7 @@ public class TestServiceImpl implements TestService {
     @Override
     public void deleteTest(String title) {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
-        try{
+        try {
             List<Question> questions = questionRepository.findByTestsTitle(title);
             for (Question question : questions) {
                 questionRepository.delete(question);
@@ -38,8 +38,7 @@ public class TestServiceImpl implements TestService {
             testRepository.deleteByTitle(title);
 
             transactionManager.commit(status);
-        }
-        catch(DataAccessException e){
+        } catch (DataAccessException e) {
 
             transactionManager.rollback(status);
             throw e;

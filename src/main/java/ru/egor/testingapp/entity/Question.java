@@ -18,7 +18,6 @@ public class Question {
     private String text;
 
 
-
     public Long getId() {
         return id;
     }

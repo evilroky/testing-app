@@ -32,19 +32,19 @@ public class QuestionRepositoryTest {
     }
 
     @BeforeEach
-    void clearDatabaseBF(){
+    void clearDatabaseBF() {
         questionRepository.deleteAll();
         testRepository.deleteAll();
     }
 
     @AfterEach
-    void clearDatabaseAF(){
+    void clearDatabaseAF() {
         questionRepository.deleteAll();
         testRepository.deleteAll();
     }
 
     @org.junit.jupiter.api.Test
-    void testFindQuestionByTestsTitle(){
+    void testFindQuestionByTestsTitle() {
         String title = UUID.randomUUID().toString();
         Test test = new Test();
         test.setTitle(title);

@@ -28,7 +28,7 @@ public class QuestionsRepositoryImpl implements QuestionsRepositoryCustom {
 
         Root<Question> q = cq.from(Question.class);
         Join<Question, Test> t = q.join("test", JoinType.INNER);
-        Predicate p = cb.equal(t.get("title"),title);
+        Predicate p = cb.equal(t.get("title"), title);
 
         cq.select(q).where(p);
 
@@ -40,7 +40,7 @@ public class QuestionsRepositoryImpl implements QuestionsRepositoryCustom {
     public void save(Question questions) {
         if (questions.getId() == null) {
             em.persist(questions);
-        }else {
+        } else {
             em.merge(questions);
         }
     }

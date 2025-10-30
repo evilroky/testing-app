@@ -28,12 +28,12 @@ class UserRepositoryTest {
     }
 
     @BeforeEach
-    void clearDatabaseBF(){
+    void clearDatabaseBF() {
         userRepository.deleteAll();
     }
 
     @AfterEach
-    void clearDatabaseAF(){
+    void clearDatabaseAF() {
         userRepository.deleteAll();
     }
 

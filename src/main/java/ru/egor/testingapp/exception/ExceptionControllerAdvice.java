@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class ExceptionControllerAdvice
-{
+public class ExceptionControllerAdvice {
     //Ошибка 500
     @ExceptionHandler(java.lang.Exception.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Exception exception(java.lang.Exception e)
-    {
+    public Exception exception(java.lang.Exception e) {
         return Exception.create(e);
     }
 
@@ -26,8 +24,7 @@ public class ExceptionControllerAdvice
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Exception exception(ResourceNotFoundException e)
-    {
+    public Exception exception(ResourceNotFoundException e) {
         return Exception.create(e);
     }
 
@@ -35,8 +32,7 @@ public class ExceptionControllerAdvice
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Exception exception(MethodArgumentNotValidException e)
-    {
+    public Exception exception(MethodArgumentNotValidException e) {
         return Exception.create(e);
     }
 
@@ -44,8 +40,7 @@ public class ExceptionControllerAdvice
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-    public Exception exception(HttpRequestMethodNotSupportedException e)
-    {
+    public Exception exception(HttpRequestMethodNotSupportedException e) {
         return Exception.create(e);
     }
 
@@ -53,8 +48,7 @@ public class ExceptionControllerAdvice
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Exception exception(IllegalArgumentException e)
-    {
+    public Exception exception(IllegalArgumentException e) {
         return Exception.create(e);
     }
 
@@ -62,8 +56,7 @@ public class ExceptionControllerAdvice
     @ExceptionHandler(DataIntegrityViolationException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.CONFLICT)
-    public Exception exception(DataIntegrityViolationException e)
-    {
+    public Exception exception(DataIntegrityViolationException e) {
         return Exception.create(e);
     }
 }

@@ -9,7 +9,7 @@ import ru.egor.testingapp.entity.User;
 import ru.egor.testingapp.repository.UserRepository;
 
 @Controller
-@RequestMapping("/main/users/view")
+@RequestMapping("/api/users/view")
 public class UserControllerView {
 
     private final UserRepository userRepository;

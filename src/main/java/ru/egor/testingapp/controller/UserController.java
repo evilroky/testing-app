@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/find")
-    public List<User> findByUsername(@RequestParam String username) {
+    public User findByUsername(@RequestParam String username) {
         return userRepository.findByUsername(username);
     }
 }

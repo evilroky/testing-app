@@ -46,7 +46,7 @@ class UserRepositoryTest {
         user.setUsername(username);
         userRepository.save(user);
 
-        User foundUser = userRepository.findByUsername(username).getFirst();
+        User foundUser = userRepository.findByUsername(username);
 
         Assertions.assertNotNull(foundUser);
         Assertions.assertEquals(user.getId(), foundUser.getId());

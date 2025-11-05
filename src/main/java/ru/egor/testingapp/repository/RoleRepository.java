@@ -6,4 +6,5 @@ import ru.egor.testingapp.entity.Role;
 
 @RepositoryRestResource(path = "roles")
 public interface RoleRepository extends CrudRepository<Role, Long> {
+    Role findRoleByName(String name);
 }

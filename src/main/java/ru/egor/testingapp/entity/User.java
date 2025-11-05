@@ -15,12 +15,12 @@ public class User {
     @Column(unique = true)
     private String username;
 
-    @Column(length = 25)
+    @Column
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role roleId;
+    @JoinColumn(name = "role")
+    private Role role;
 
     @Column()
     public LocalDateTime createDate;
@@ -37,8 +37,8 @@ public class User {
         return password;
     }
 
-    public Role getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
     public LocalDateTime getCreateDate() {
@@ -53,21 +53,21 @@ public class User {
         this.password = password;
     }
 
-    public void setRoleId(Role roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public void setCreate_date(LocalDateTime createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
     public User() {
     }
 
-    public User(String username, String password, Role roleId, LocalDateTime createDate) {
+    public User(String username, String password, Role role, LocalDateTime createDate) {
         this.username = username;
         this.password = password;
-        this.roleId = roleId;
+        this.role = role;
         this.createDate = createDate;
     }
 }

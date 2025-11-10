@@ -22,9 +22,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             User user = new User();
-            if(userRepository.findByUsername(username) != null) {
+            if (userRepository.findByUsername(username) != null) {
                 user = userRepository.findByUsername(username);
-            }else throw new NullPointerException();
+            } else throw new NullPointerException();
 
             return org.springframework.security.core.userdetails.User.builder()
                     .username(user.getUsername())

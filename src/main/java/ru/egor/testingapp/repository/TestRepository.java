@@ -8,4 +8,5 @@ import ru.egor.testingapp.entity.Test;
 public interface TestRepository extends CrudRepository<Test, Long> {
 
     void deleteByTitle(String title);
+
 }

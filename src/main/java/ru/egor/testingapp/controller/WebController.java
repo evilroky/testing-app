@@ -34,7 +34,7 @@ public class WebController {
     @PostMapping("/registration")
     public String registerUser(User user, Model model) {
         try {
-            enum roles{
+            enum roles {
                 ROLE_USER,
                 ROLE_ADMIN
             }

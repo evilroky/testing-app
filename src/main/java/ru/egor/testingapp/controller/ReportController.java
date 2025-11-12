@@ -16,7 +16,7 @@ public class ReportController {
 
     @PostMapping
     public String createReport() {
-        Long id = reportService.reportCreate();
+        Long id = reportService.createReport();
         reportService.generateReport(id);
         return "redirect:/api/reports/" + id;
     }

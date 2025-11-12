@@ -12,6 +12,7 @@ import ru.egor.testingapp.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class ReportService {
@@ -27,7 +28,7 @@ public class ReportService {
         this.userRepository = userRepository;
     }
 
-    public Long reportCreate() {
+    public Long createReport() {
         Report report = new Report(ReportStatus.CREATED, "Отчет формируется...");
         reportRepository.save(report);
         return report.getId();
@@ -44,31 +45,31 @@ public class ReportService {
         if (report.getStatus() == ReportStatus.ERROR) {
             return "Ошибка при формировании отчета..";
         }
-        return report.getTitle();
+        return report.getBody();
     }
 
     public CompletableFuture<Void> generateReport(Long id) {
         return CompletableFuture.runAsync(() -> {
-            long start = System.currentTimeMillis();
+            long startTime = System.currentTimeMillis();
             Report report = reportRepository.findById(id).orElseThrow();
             try {
                 //1 поток
-                final long[] userCount = new long[1];
-                final long[] elapsedUserCount = new long[1];
+                AtomicLong userCount = new AtomicLong();
+                AtomicLong elapsedUserCountTime = new AtomicLong();
                 Thread userCountThread = new Thread(() -> {
-                    long startUserCount = System.currentTimeMillis();
-                    userCount[0] = userRepository.count();
-                    elapsedUserCount[0] = System.currentTimeMillis() - startUserCount;
+                    long startUserCountTime = System.currentTimeMillis();
+                    userCount.set(userRepository.count());
+                    elapsedUserCountTime.set(System.currentTimeMillis() - startUserCountTime);
                 });
 
                 //2 поток
                 List<Test> listTest = new ArrayList<>();
-                final long[] elapsedTestCount = new long[1];
-                final long startTestCount = System.currentTimeMillis();
+                AtomicLong elapsedTestCountTime = new AtomicLong();
                 Thread testCountThread = new Thread(() -> {
+                    long startTestCountTime = System.currentTimeMillis();
                     Iterable<Test> tests = testRepository.findAll();
                     tests.forEach(listTest::add);
-                    elapsedTestCount[0] = System.currentTimeMillis() - startTestCount;
+                    elapsedTestCountTime.set(System.currentTimeMillis() - startTestCountTime);
                 });
 
                 userCountThread.start();
@@ -80,7 +81,7 @@ public class ReportService {
                 StringBuilder rb = new StringBuilder();
                 rb.append("<html><head><meta charset='UTF-8'><title>Практическая работа №6.</title></head><body>");
                 rb.append("<h2>Отчет сформирован успешно!</h2>");
-                rb.append("<p>Количество пользователей: ").append(userCount[0]).append("</p>");
+                rb.append("<p>Количество пользователей: ").append(userCount).append("</p>");
                 rb.append("Список тестов: ");
                 rb.append("<table border='1' cellpadding='5'><tr><th>ID</th><th>Название</th><th>Описание</th><th>Автор</th><th>Дата создания</th></tr>");
                 for (Test test : listTest) {
@@ -93,18 +94,18 @@ public class ReportService {
                             .append("</tr>");
                 }
                 rb.append("</table>");
-                long totalElapsedTime = System.currentTimeMillis() - start;
-                rb.append("<p>Время подсчета пользователей: ").append(elapsedUserCount[0]).append(" мс. </p>");
-                rb.append("<p>Время получения списка тестов: ").append(elapsedTestCount[0]).append(" мс. </p>");
+                long totalElapsedTime = System.currentTimeMillis() - startTime;
+                rb.append("<p>Время подсчета пользователей: ").append(elapsedUserCountTime).append(" мс. </p>");
+                rb.append("<p>Время получения списка тестов: ").append(elapsedTestCountTime).append(" мс. </p>");
                 rb.append("<p>Общее время формирования отчета: ").append(totalElapsedTime).append(" мс. </p>");
                 rb.append("</body></html>");
 
                 report.setStatus(ReportStatus.COMPLETED);
-                report.setTitle(rb.toString());
+                report.setBody(rb.toString());
                 reportRepository.save(report);
             } catch (Exception e) {
                 report.setStatus(ReportStatus.ERROR);
-                report.setTitle("Ошибка при формировании отчета: " + e.getMessage());
+                report.setBody("Ошибка при формировании отчета: " + e.getMessage());
                 reportRepository.save(report);
             }
         });

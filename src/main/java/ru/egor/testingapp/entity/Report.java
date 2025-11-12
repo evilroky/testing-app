@@ -15,7 +15,7 @@ public class Report {
     private ReportStatus status;
 
     @Column(columnDefinition = "TEXT")
-    private String title;
+    private String body;
 
     public Long getId() {
         return id;
@@ -33,19 +33,19 @@ public class Report {
         this.status = status;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBody() {
+        return body;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public Report() {
     }
 
-    public Report(ReportStatus status, String title) {
+    public Report(ReportStatus status, String body) {
         this.status = status;
-        this.title = title;
+        this.body = body;
     }
 }

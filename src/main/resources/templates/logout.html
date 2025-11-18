@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Выход</title>
+    <title>logout</title>
 </head>
 <body>
+<h2>logout</h2>
 <div th:if="${message}">
     <div th:text="${message}"></div>
 </div>
 <form th:action="@{/logout}" method="post">
-    <button type="submit">Logout</button>
+    <button type="submit">logout</button>
 </form>
 </body>
 </html>

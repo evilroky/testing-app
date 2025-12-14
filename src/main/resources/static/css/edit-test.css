@@ -1,0 +1,151 @@
+/* Общий контейнер страницы */
+.edit-container {
+    max-width: 1100px;
+    padding: 30px 40px;
+    margin: 30px auto;
+    background: #f5f7ff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    font-family: "Inter", sans-serif;
+}
+
+.edit-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.edit-subtitle {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Блок с основными данными теста */
+.edit-main-block {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 25px;
+    border: 1px solid #dfe3ff;
+    margin-bottom: 30px;
+}
+
+.edit-label {
+    font-weight: 600;
+    margin-top: 12px;
+    display: block;
+}
+
+.edit-input,
+.edit-textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #cfd6ff;
+    background: #fafaff;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.edit-textarea {
+    resize: none;
+}
+
+/* Заголовок вопросов */
+.questions-header {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+/* Блок каждого вопроса */
+.edit-question {
+    background: white;
+    border: 1px solid #e4e7ff;
+    padding: 20px 25px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question-title {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* Поле вопроса */
+.question-input {
+    margin-top: 8px;
+}
+
+/* Удаление вопроса и ответов */
+.delete-question-btn,
+.delete-answer-btn {
+    color: #d9534f;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.delete-question-btn:hover,
+.delete-answer-btn:hover {
+    text-decoration: underline;
+}
+
+/* Ответы */
+.edit-answer-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.edit-answer-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f8f9ff;
+    border: 1px solid #ccd3ff;
+}
+
+.correct-checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+/* Добавление вопроса */
+.add-question-btn {
+    background: #6c63ff;
+    padding: 12px 22px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.add-question-btn:hover {
+    background: #5951ef;
+}
+
+/* Сохранение */
+.save-changes-btn {
+    width: 100%;
+    background: #4a5bff;
+    padding: 14px;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.save-changes-btn:hover {
+    background: #3c4ae0;
+}

@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Вход</title>
+    <meta charset="UTF-8">
+    <title>Войти — ТестМастер</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
+
 <body>
-<div th:if="${message}">
-    <div th:text="${message}"></div>
+<div class="container">
+    <div class="form-box">
+        <h2>ТестМастер - Вход</h2>
+        <div th:if="${error}" class="error-message" >
+            <span th:text="${error}" id="error"></span>
+        </div>
+        <p class="subtitle">Введите имя пользователя и пароль</p>
+
+        <form method="post" th:action="@{/login}">
+            <div class="input-group">
+                <input name="username" placeholder="Имя пользователя" required type="text">
+            </div>
+
+            <div class="input-group">
+                <input name="password" placeholder="Пароль" required type="password">
+            </div>
+
+            <button class="btn-primary" type="submit" id="loginButton">Войти</button>
+        </form>
+
+        <p class="bottom-text">
+            Нет аккаунта?
+            <a th:href="@{/registration}">Зарегистрироваться</a>
+        </p>
+    </div>
 </div>
-<form th:action="@{/login}" method="post">
-    <div>
-        <label>Имя пользователя: <input type="text" name="username"/></label>
-    </div>
-    <div>
-        <label>Пароль: <input type="password" name="password"/></label>
-    </div>
-    <div>
-        <input type="submit" value="Войти"/>
-    </div>
-</form>
 </body>
 </html>

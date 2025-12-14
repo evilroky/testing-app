@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование теста</title>
+
+    <link rel="stylesheet" th:href="@{/css/edit-test.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<div class="container edit-container">
+
+    <h1 class="edit-title">Редактирование теста</h1>
+    <p class="subtitle edit-subtitle">Измените данные теста и вопросы</p>
+
+    <form class="edit-form" method="post" th:action="@{/admin/tests/edit/{id}(id=${test.id})}">
+        <input id="deleteQuestions" name="deleteQuestions" type="hidden">
+
+        <div class="form-block edit-main-block">
+            <label class="edit-label">Название теста</label>
+            <input class="edit-input" name="title" required th:value="${test.title}" type="text">
+
+            <label class="edit-label">Тема</label>
+            <input class="edit-input" name="theme" required th:value="${test.theme}" type="text">
+
+            <label class="edit-label">Описание</label>
+            <textarea class="edit-textarea" name="description" rows="3" th:text="${test.description}"></textarea>
+        </div>
+
+        <h2 class="questions-header">Вопросы</h2>
+
+        <div class="questions-container" id="questionsContainer">
+
+            <div class="question-block edit-question" th:each="q, qi : ${questions}">
+
+                <div class="q-header question-header">
+                    <h3 class="question-title">Вопрос [[${qi.index + 1}]]</h3>
+
+                    <a class="delete-btn delete-question-btn" href="#"
+                       th:onclick="'markQuestionForDelete(' + ${q.id} + ', this); return false;'">
+                        Удалить вопрос
+                    </a>
+
+                </div>
+
+                <label class="edit-label">Текст вопроса:</label>
+                <input class="edit-input question-input" required th:name="'question_' + ${q.id}"
+                       th:value="${q.text}" type="text">
+
+                <div class="answers-container">
+
+                    <div class="answer-row edit-answer-row" th:each="a : ${answers[q.id]}">
+
+                        <input class="answer-input edit-answer-input"
+                               th:name="'answer_' + ${a.id}"
+                               th:value="${a.text}"
+                               type="text">
+
+                        <input class="correct-checkbox"
+                               th:checked="${a.correct}"
+                               th:name="'correct_' + ${a.id}"
+                               type="checkbox">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <button class="btn-add add-question-btn" onclick="addQuestion()" type="button">
+            + Добавить вопрос
+        </button>
+
+        <button class="btn-submit save-changes-btn" type="submit">
+            Сохранить изменения
+        </button>
+
+    </form>
+
+</div>
+
+
+<script th:src="@{/js/edit-test.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>История прохождений</title>
+    <link rel="stylesheet" th:href="@{/css/history.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<header th:replace="~{fragments/header :: header}"></header>
+<body>
+
+<div class="history-container">
+
+    <h1>История прохождений</h1>
+
+    <div class="empty" th:if="${#lists.isEmpty(results)}">
+        Вы ещё не проходили тесты.
+    </div>
+
+    <div class="results-list">
+        <div class="result-card" th:each="r : ${results}">
+            <h2 th:text="${r.test.title}"></h2>
+
+            <p class="theme">
+                Тема: <span th:text="${r.test.theme}"></span>
+            </p>
+
+            <p class="score">
+                Результат:
+                <b th:text="${r.score}"></b> / <span th:text="${r.total}"></span>
+            </p>
+
+            <p class="date">
+                Дата:
+                <span th:text="${#temporals.format(r.passedDate, 'dd.MM.yyyy HH:mm')}"></span>
+            </p>
+
+            <a class="btn-details" th:href="@{'/tests/' + ${r.test.id} + '/result'}">
+                Подробнее
+            </a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

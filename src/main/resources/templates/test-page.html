@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${test.title}">Тест</title>
+    <link rel="stylesheet" th:href="@{/css/test-page.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<header th:replace="~{fragments/header :: header}"></header>
+<body class="test-body">
+
+<div class="test-container">
+
+    <!-- Заголовок -->
+    <h1 class="test-title" th:text="${test.title}"></h1>
+
+    <!-- Описание + автор -->
+    <div class="test-info-block">
+        <p class="test-desc" th:text="${test.description}"></p>
+        <p class="test-author">
+            Автор: <b th:text="${test.author.username}"></b>
+        </p>
+    </div>
+
+    <!-- Кнопка начала прохождения -->
+    <button class="btn-start" id="startBtn" onclick="startTest()">Начать прохождение</button>
+
+    <!-- Форма скрыта до начала -->
+    <form id="testForm"
+          method="post"
+          style="display:none;"
+          th:action="@{/tests/{id}/submit(id=${test.id})}">
+
+        <div class="question-card" th:each="q, iter : ${questions}">
+
+            <div class="question-header">
+                <span class="question-number">Вопрос [[${iter.index + 1}]]</span>
+            </div>
+
+            <p class="question-text" th:text="${q.text}"></p>
+
+            <div class="answer-option" th:each="a : ${answersMap[q.id]}">
+                <label>
+                    <input th:name="'q_' + ${q.id}"
+                           th:value="${a.id}"
+                           type="radio">
+                    <span th:text="${a.text}"></span>
+                </label>
+            </div>
+
+        </div>
+
+        <!-- Кнопка завершения -->
+        <button class="btn-submit-test" type="submit">Закончить прохождение</button>
+    </form>
+
+</div>
+
+<script>
+    function startTest() {
+        document.getElementById("startBtn").style.display = "none";
+        document.getElementById("testForm").style.display = "block";
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+</script>
+
+</body>
+</html>

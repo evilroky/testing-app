@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Результат теста</title>
+    <link rel="stylesheet" th:href="@{/css/test-result.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<div class="result-container">
+
+    <h1 th:text="${test.title}"></h1>
+    <p class="test-info">
+        Автор: <span th:text="${test.author.username}"></span><br>
+        Тема: <span th:text="${test.theme}"></span>
+    </p>
+
+    <div class="result-box">
+        <h2>Ваш результат:</h2>
+
+        <p class="score">
+            <span th:text="${result.score}"></span> /
+            <span th:text="${result.total}"></span>
+        </p>
+
+        <p class="date">
+            Пройден: <span th:text="${#temporals.format(result.passedDate, 'dd.MM.yyyy HH:mm')}"></span>
+        </p>
+    </div>
+
+    <a class="back-btn" th:href="@{/tests}">Назад к тестам</a>
+
+</div>
+
+</body>
+</html>

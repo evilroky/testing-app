@@ -1,0 +1,140 @@
+/* ===== Page layout ===== */
+.page {
+    background: #f4f6fb;
+    min-height: 100vh;
+}
+
+.page-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ===== Card ===== */
+.tests-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 28px 32px 32px;
+}
+
+.tests-card__header {
+    margin-bottom: 24px;
+}
+
+.tests-card__title {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    color: #1f2937;
+}
+
+.tests-card__subtitle {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* ===== Table ===== */
+.tests-table-wrapper {
+    overflow-x: auto;
+}
+
+.tests-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.tests-table thead {
+    background: #eef2ff;
+}
+
+.tests-table th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 700;
+    color: #2d43c2;
+}
+
+.tests-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1f2937;
+    vertical-align: middle;
+}
+
+.tests-table tbody tr:hover {
+    background: #f8faff;
+}
+
+/* ===== Cells ===== */
+.actions-cell {
+    display: flex;
+    gap: 10px;
+}
+
+/* ===== Buttons ===== */
+.action-btn {
+    padding: 7px 14px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.edit-btn {
+    background: #e9ecff;
+    color: #2d43c2;
+}
+
+.edit-btn:hover {
+    background: #dce1ff;
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background: #ffe6e6;
+    color: #c62828;
+}
+
+.delete-btn:hover {
+    background: #ffd3d3;
+    transform: translateY(-2px);
+}
+
+/* ===== Forms ===== */
+.delete-form {
+    margin: 0;
+}
+
+/* ===== Переключатель страниц ===== */
+.admin-switcher {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.switcher-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    background: #e9ecff;
+    color: #2d43c2;
+    transition: 0.25s;
+}
+
+.switcher-btn:hover {
+    background: #dce1ff;
+    transform: translateY(-2px);
+}
+
+.switcher-btn.active {
+    background: #3b6dff;
+    color: #ffffff;
+    pointer-events: none; /* нельзя нажать на активную */
+}

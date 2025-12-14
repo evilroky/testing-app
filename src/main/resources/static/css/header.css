@@ -1,0 +1,95 @@
+/* Подключаем красивый округлый шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+.topbar {
+    background: #3B6DFF; /* красивый синий фон */
+    padding: 18px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+}
+
+/* ЛОГОТИП */
+.brand {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+}
+
+/* НАВИГАЦИЯ */
+.main-nav {
+    display: flex;
+    gap: 20px;
+}
+
+/* КНОПКИ */
+.nav-btn {
+    background: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    color: #3B6DFF;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.25s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-btn:hover {
+    background: #f0f3ff;
+    transform: translateY(-2px);
+}
+
+/* ТЕКСТ ПОЛЬЗОВАТЕЛЯ */
+.username {
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* КНОПКА ПРОФИЛЯ */
+.profile-btn {
+    background: #E9ECFF;
+    color: #2D43C2;
+}
+
+/* КНОПКА ВЫХОДА */
+.logout-btn {
+    background: #FFE6E6;
+    color: #C62828;
+    border: none;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #FFD3D3;
+    transform: translateY(-2px);
+}
+
+/* БЛОК С ПОЛЬЗОВАТЕЛЕМ */
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Убираем отступы у формы */
+.logout-form {
+    margin: 0;
+}

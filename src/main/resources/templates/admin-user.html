@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ-панель — Пользователи</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-user.css}">
+</head>
+<header th:replace="~{fragments/header :: header}"></header>
+<body class="page">
+<main class="page-content">
+    <section class="users-card">
+        <div class="admin-switcher">
+            <a class="switcher-btn active" th:href="@{/admin/users}">Пользователи</a>
+            <a class="switcher-btn" th:href="@{/admin/tests}">Тесты</a>
+            <a class="switcher-btn" th:href="@{/swagger-ui/index.html}">Документация</a>
+        </div>
+        <div class="users-card__header">
+            <h1 class="users-card__title">Пользователи</h1>
+            <span class="users-card__subtitle">Список зарегистрированных пользователей</span>
+        </div>
+
+        <div class="users-table-wrapper">
+            <table class="users-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Create date</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td class="password-cell" th:text="${user.password}"></td>
+                    <td th:text="${user.role.name}"></td>
+                    <td th:text="${user.createDate}"></td>
+                    <td class="actions-cell">
+                        <a class="action-btn edit-btn"
+                           th:href="@{/admin/users/edit/{id}(id=${user.id})}">Редактировать</a>
+
+                        <form class="delete-form"
+                              method="post"
+                              th:action="@{/admin/users/delete/{id}(id=${user.id})}">
+                            <button class="action-btn delete-btn"
+                                    onclick="return confirm('Удалить пользователя?')"
+                                    type="submit">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать тест — ТестМастер</title>
+    <link rel="stylesheet" th:href="@{/css/create-test.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<header th:replace="~{fragments/header :: header}"></header>
+<body class="page-create-tests">
+
+<!-- Сообщение -->
+<div class="alert-box"
+     th:classappend="${messageType} == 'success' ? ' alert-success' : ' alert-error'"
+     th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+
+<div class="create-tests-container">
+
+    <h1 class="create-title">Создание нового теста</h1>
+    <p class="create-subtitle">Заполните основные данные и добавьте вопросы</p>
+
+    <form class="create-form" id="testForm" method="post" th:action="@{/tests/create}">
+
+        <!-- Основная информация -->
+        <div class="form-section">
+
+            <label class="form-label">Название теста</label>
+            <input class="form-input" name="title" required type="text">
+
+            <label class="form-label">Тема</label>
+            <input class="form-input" name="theme" required type="text">
+
+            <label class="form-label">Описание</label>
+            <textarea class="form-textarea" name="description" rows="3"></textarea>
+        </div>
+
+        <!-- Вопросы -->
+        <h2 class="questions-title">Вопросы</h2>
+
+        <div class="questions-container" id="questionsContainer"></div>
+
+        <!-- Кнопка добавления вопроса -->
+        <button class="btn btn-add-question" onclick="addQuestion()" type="button">
+            + Добавить вопрос
+        </button>
+
+        <!-- Отправка -->
+        <button class="btn btn-submit" type="submit">
+            Закончить создание
+        </button>
+
+    </form>
+</div>
+
+<script th:src="@{/js/create-test.js}"></script>
+</body>
+</html>
+

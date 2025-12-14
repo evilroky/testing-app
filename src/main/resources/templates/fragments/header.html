@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+    <header class="topbar">
+        <div class="container topbar-inner">
+
+            <div class="brand">ТестМастер</div>
+
+            <nav class="main-nav">
+                <a class="nav-btn" id="main"    th:href="@{/}">Главная</a>
+                <a class="nav-btn" id="tests"  th:href="@{/tests}">Выбрать тест</a>
+                <a class="nav-btn" id="create"  th:href="@{/tests/create}">+ Создать тест</a>
+                <a class="nav-btn" id="history"  th:href="@{/history}">История тестирований</a>
+                <div sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-btn" th:href="@{/admin/users}">Админ-панель</a>
+                </div>
+            </nav>
+
+            <div class="user-actions">
+
+            <span sec:authorize="isAnonymous()">
+                <a class="nav-btn" id="login"  th:href="@{/login}">Войти</a>
+                <a class="nav-btn" id="registration"  th:href="@{/registration}">Зарегистрироваться</a>
+            </span>
+
+                <div class="user-box" sec:authorize="isAuthenticated()">
+
+                    <span class="username" id="name">Привет, <b sec:authentication="name"></b>!</span>
+
+                    <a class="nav-btn profile-btn" th:href="@{/profile}">Профиль</a>
+
+                    <form class="logout-form" method="post" th:action="@{/logout}">
+                        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
+                        <button class="nav-btn logout-btn" type="submit" id="logoutButton">Выход</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+</div>
+</html>

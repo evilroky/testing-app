@@ -1,0 +1,55 @@
+
+.result-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.15);
+    text-align: center;
+    font-family: "Segoe UI", sans-serif;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #003f8c;
+}
+
+.test-info {
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.result-box {
+    background: #f6f9ff;
+    border-left: 5px solid #005cff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.score {
+    font-size: 40px;
+    font-weight: bold;
+    color: #005cff;
+}
+
+.date {
+    color: #333;
+    margin-top: 10px;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #005cff;
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.back-btn:hover {
+    background: #003f8c;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Профиль</title>
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+
+<div class="profile-container">
+
+    <h1>Ваш профиль</h1>
+
+    <div th:class="'alert ' + (${messageType} == 'success' ? 'alert-success' : 'alert-error')"
+         th:if="${message}">
+        <p th:text="${message}"></p>
+    </div>
+
+    <!-- Изменение имени -->
+    <div class="card">
+        <h2>Изменить имя</h2>
+        <form method="post" th:action="@{/profile/update-name}">
+            <label>Имя пользователя</label>
+            <input name="username" required th:value="${user.username}" type="text">
+            <button class="btn-save" type="submit">Сохранить</button>
+        </form>
+    </div>
+
+    <!-- Изменение пароля -->
+    <div class="card">
+        <h2>Изменить пароль</h2>
+        <form method="post" th:action="@{/profile/update-password}">
+            <label>Новый пароль</label>
+            <input name="password" required type="password">
+            <button class="btn-save" type="submit">Обновить пароль</button>
+        </form>
+    </div>
+
+    <!-- Тесты пользователя -->
+    <div class="card">
+        <h2>Мои тесты</h2>
+
+        <div th:if="${#lists.isEmpty(tests)}">
+            <p class="empty">Вы ещё не создавали тесты.</p>
+        </div>
+
+        <div class="tests-list" th:if="${!#lists.isEmpty(tests)}">
+
+            <div class="tests-item" th:each="t : ${tests}">
+                <div class="info">
+                    <h3 th:text="${t.title}"></h3>
+                    <p>Тема: <span th:text="${t.theme}"></span></p>
+                </div>
+
+                <div class="actions">
+                    <a class="btn-view" th:href="@{'/tests/' + ${t.id}}">Открыть</a>
+                    <a class="btn-edit" th:href="@{'/tests/' + 'edit/' + ${t.id}}">Редактировать</a>
+
+                    <form method="post" th:action="@{'/profile/delete-test/' + ${t.id}}">
+                        <button class="btn-delete" type="submit">Удалить</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

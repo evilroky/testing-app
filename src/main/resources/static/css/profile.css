@@ -1,0 +1,137 @@
+body {
+    background: #f4f7ff;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 25px;
+    color: #003f8c;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 40, 140, 0.15);
+    margin-bottom: 30px;
+}
+
+.card h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #003f8c;
+}
+
+label {
+    font-weight: 600;
+    color: #003f8c;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #d0d7e6;
+    margin-top: 8px;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.btn-save {
+    background: #005cff;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-save:hover {
+    background: #0040a8;
+}
+
+.tests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.test-item {
+    background: #f6f9ff;
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 40, 140, 0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.test-item .info h3 {
+    margin: 0;
+    color: #003f8c;
+}
+
+.test-item .info p {
+    margin: 4px 0 0 0;
+    color: #576380;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions a,
+.actions button {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-view {
+    background: #005cff;
+    color: white;
+}
+
+.btn-edit {
+    background: #ffaa00;
+    color: white;
+}
+
+.btn-delete {
+    background: #ff4d4d;
+    color: white;
+}
+
+.btn-view:hover {
+    background: #0040a8;
+}
+
+.btn-edit:hover {
+    background: #e69800;
+}
+
+.btn-delete:hover {
+    background: #d13030;
+}
+
+.empty {
+    color: #616b80;
+    background: #eef3ff;
+    border-left: 4px solid #005cff;
+    padding: 15px;
+    border-radius: 10px;
+}
